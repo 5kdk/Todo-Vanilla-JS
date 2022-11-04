@@ -4,7 +4,7 @@ const toDoList = document.getElementById("todo-list");
 
 const TODOS_KEY = "todos";
 
-const toDos = [];
+let toDos = [];
 
 function saveTodos() {
   localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
@@ -42,7 +42,8 @@ const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if (savedToDos !== null) {
   const parseToDos = JSON.parse(savedToDos);
+  toDos = parseToDos;
   parseToDos.forEach((item) => {
-    console.log(`this is the turn off ${item}`);
+    paintToDo(item);
   });
 }
